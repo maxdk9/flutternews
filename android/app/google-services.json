@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "466669902282",
+    "project_id": "flutternews-9f9fe",
+    "storage_bucket": "flutternews-9f9fe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:466669902282:android:74855c270249ad01c95733",
+        "android_client_info": {
+          "package_name": "mazzy.and.flutternews"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "466669902282-bqp36smg5k91u49eos8hfpt3jdhaaeak.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHc0mdU1QhL_Y0VI8zNniiEnynkGvNhFA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "466669902282-bqp36smg5k91u49eos8hfpt3jdhaaeak.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
