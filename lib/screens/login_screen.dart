@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutternews/screens/main_screen.dart';
+import 'package:flutternews/screens/articles_screen.dart';
 import 'package:flutternews/theme/constants.dart';
 import 'package:flutternews/widgets/rounded_button.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -82,7 +82,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   try{
                     final newUser= await  _auth.signInWithEmailAndPassword(email: email, password: password);
                     if(newUser!=null){
-                      Navigator.pushNamed(context, MainScreen.id);
+                      Navigator.pushNamed(context, ArticlesScreen.id);
                     }
                     setState(() {
                         showSpinner=false;

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutternews/screens/articles_screen.dart';
 import 'package:flutternews/screens/favorites_screen.dart';
 import 'package:flutternews/screens/login_screen.dart';
-import 'package:flutternews/screens/main_screen.dart';
+
 import 'package:flutternews/screens/registration_screen.dart';
 import 'package:flutternews/screens/webview_screen.dart';
 import 'package:flutternews/screens/welcome_screen.dart';
@@ -37,7 +37,6 @@ class MyApp extends StatelessWidget {
       WelcomeScreen.id:(context)=>WelcomeScreen(),
       LoginScreen.id:(context)=>LoginScreen(),
       RegistrationScreen.id:(context)=>RegistrationScreen(),
-      MainScreen.id:(context)=>MainScreen(),
       WebviewScreen.id:(context)=>WebviewScreen(),
       ArticlesScreen.id:(context)=>ArticlesScreen(),
       FavoritesScreen.id:(context)=>FavoritesScreen()

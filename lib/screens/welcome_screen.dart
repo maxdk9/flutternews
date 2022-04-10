@@ -1,7 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutternews/screens/main_screen.dart';
 import 'package:flutternews/screens/registration_screen.dart';
 import 'package:flutternews/widgets/rounded_button.dart';
 import 'articles_screen.dart';

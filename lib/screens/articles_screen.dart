@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutternews/screens/favorites_screen.dart';
-import 'package:flutternews/screens/main_screen.dart';
 import 'package:flutternews/widgets/article_list_widget.dart';
-import 'package:flutternews/widgets/favorites_list_widget.dart';
 
 class ArticlesScreen extends StatefulWidget {
   static const String id = 'article_screen';
