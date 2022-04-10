@@ -36,3 +36,4 @@ const kTextFieldDecoration =InputDecoration(
   ),
 );
 
+const UrlImageNotFound='https://aeroclub-issoire.fr/wp-content/uploads/2020/05/image-not-found-300x225.jpg';

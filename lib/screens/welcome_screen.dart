@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutternews/screens/main_screen.dart';
 import 'package:flutternews/screens/registration_screen.dart';
 import 'package:flutternews/widgets/rounded_button.dart';
+import 'articles_screen.dart';
 import 'login_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -105,10 +106,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
 
   void checkCurrentUser()   {
        _auth.currentUser().then((value) {
-         print(value);
         if(value!=null){
-
-        //  Navigator.pushNamed(context, MainScreen.id);
+          Navigator.pushNamed(context, ArticlesScreen.id);
         }
       });
 

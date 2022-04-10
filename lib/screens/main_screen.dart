@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutternews/widgets/article_list_widget.dart';
+import 'package:flutternews/widgets/favorites_list_widget.dart';
 
 class MainScreen extends StatefulWidget {
   static const String id = 'main_screen';
@@ -10,7 +12,7 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int _selectedTab=1;
+  int _selectedTab=0;
 
 
 
@@ -31,8 +33,8 @@ class _MainScreenState extends State<MainScreen> {
       body: IndexedStack(
         index: _selectedTab,
         children: [
-          Text('News'),
-          Text('Favorites'),
+          ArticleListWidget(),
+          FavoritesListWidget(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
