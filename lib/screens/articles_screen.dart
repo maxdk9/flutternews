@@ -22,7 +22,7 @@ class _ArticlesScreenState extends State<ArticlesScreen> {
           color: Colors.black12,
           child: InkWell(
             onTap:()=> {
-              Navigator.pushNamed(context, FavoritesScreen.id)
+              Navigator.pushReplacementNamed(context, FavoritesScreen.id)
             },
             child: Padding(
               padding: EdgeInsets.only(top: 8.0),

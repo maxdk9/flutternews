@@ -23,7 +23,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
         color: Colors.black12,
         child: InkWell(
           onTap:()=> {
-            Navigator.restorablePushNamed(context, ArticlesScreen.id)
+            Navigator.pushReplacementNamed(context, ArticlesScreen.id)
           },
           child: Padding(
             padding: EdgeInsets.only(top: 8.0),
