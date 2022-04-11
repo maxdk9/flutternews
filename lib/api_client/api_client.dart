@@ -13,7 +13,6 @@ class ApiClient{
   //static const String _apiKey='210c7980357d4bf486f7e61ad2df87b7';
   static const String _apiKey='c82749bba25d4d6689e43e79ac6152e4';
 
-
   Future<ArticleResponse> newsSearchDay(String query) async{
     final parser =(dynamic json){
 
@@ -21,9 +20,6 @@ class ApiClient{
       final ArticleResponse response=ArticleResponse.fromJson(json);
       return response;
     };
-
-
-
     final result= await _get(
         '/everything',parser, <String,dynamic>{
       'q': query,
@@ -38,8 +34,6 @@ class ApiClient{
   }
 
 
-
-
   Future<ArticleResponse> newsHeadlinesDay() async{
     final parser =(dynamic json){
 
@@ -47,8 +41,6 @@ class ApiClient{
       final ArticleResponse response=ArticleResponse.fromJson(json);
       return response;
     };
-
-
 
     final result= await _get(
       '/top-headlines',parser, <String,dynamic>{
@@ -61,7 +53,6 @@ class ApiClient{
     );
     return result;
   }
-
 
   Uri _makeUri(String path,[Map<String,dynamic>? parameters]){
     final uri=Uri.parse('$_host$path');

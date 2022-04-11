@@ -22,17 +22,15 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
         height: 60,
         color: Colors.black12,
         child: InkWell(
-          onTap:()=> {
-            Navigator.pushReplacementNamed(context, ArticlesScreen.id)
-          },
+          onTap: () =>
+              {Navigator.pushReplacementNamed(context, ArticlesScreen.id)},
           child: Padding(
             padding: EdgeInsets.only(top: 8.0),
             child: Column(
               children: <Widget>[
                 Icon(
-                  Icons.favorite,
+                  Icons.article,
                   color: Theme.of(context).accentColor,
-
                 ),
                 Text('GOTO NEWS'),
               ],
@@ -40,8 +38,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
           ),
         ),
       ),
-      body:
-      FavoritesListWidget(),
+      body: FavoritesListWidget(),
     );
   }
 }

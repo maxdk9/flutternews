@@ -1,8 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutternews/database/db_service.dart';
 import 'package:flutternews/model/article.dart';
-
 import 'article_item_widget.dart';
 
 class FavoritesListWidget extends StatefulWidget {
@@ -13,29 +11,22 @@ class FavoritesListWidget extends StatefulWidget {
 }
 
 class _FavoritesListWidgetState extends State<FavoritesListWidget> {
-  final DatabaseService databaseService=DatabaseService();
+  final DatabaseService databaseService = DatabaseService();
 
   @override
   void initState() {
-    print('Favorites init ');
     super.initState();
     loadFavorites();
   }
 
-
   @override
   void setState(VoidCallback fn) {
-    super.setState(() {
-
-    });
-    print('Favorites setstate');
+    super.setState(() {});
   }
 
-  void loadFavorites() async{
+  void loadFavorites() async {
     await databaseService.loadFavorites();
-    setState(() {
-
-    });
+    setState(() {});
   }
 
   @override
@@ -48,20 +39,19 @@ class _FavoritesListWidgetState extends State<FavoritesListWidget> {
             itemCount: databaseService.articles.length,
             itemExtent: 163,
             itemBuilder: (BuildContext context, int index) {
-              Article article=databaseService.articles[index];
-              return ArticleItemWidget(article: article,changeArticleFavorites: changeArticleFavorites,);
+              Article article = databaseService.articles[index];
+              return ArticleItemWidget(
+                article: article,
+                changeArticleFavorites: changeArticleFavorites,
+              );
             }),
-
       ],
     );
   }
 
-  void changeArticleFavorites(Article article) async{
+  void changeArticleFavorites(Article article) async {
     await databaseService.deleteFavorite(article);
     await databaseService.loadFavorites();
-    setState(() {
-    });
+    setState(() {});
   }
-
-
 }

@@ -1,5 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutternews/screens/registration_screen.dart';
 import 'package:flutternews/widgets/rounded_button.dart';
@@ -8,45 +9,38 @@ import 'login_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
   static const String id = 'welcome_screen';
+
   @override
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
 
-class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderStateMixin{
-
+class _WelcomeScreenState extends State<WelcomeScreen>
+    with SingleTickerProviderStateMixin {
   late AnimationController controller;
   late Animation animation;
 
-  final _auth= FirebaseAuth.instance;
-
   @override
-  void dispose(){
+  void dispose() {
     controller.dispose();
     super.dispose();
   }
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
-
-
-    controller=AnimationController(
+    controller = AnimationController(
       duration: Duration(
         seconds: 1,
       ),
-      vsync:this,
+      vsync: this,
     );
-    animation=ColorTween(begin: Colors.blueGrey,end: Colors.white).animate(controller);
+    animation = ColorTween(begin: Colors.blueGrey, end: Colors.white)
+        .animate(controller);
     controller.forward();
     controller.addListener(() {
-      setState(() {
-      });
+      setState(() {});
     });
-
-    checkCurrentUser();
-
   }
 
   @override
@@ -71,10 +65,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
                 TypewriterAnimatedTextKit(
                   text: ['NEWS'],
                   textStyle: TextStyle(
-                    fontSize: 45.0,
-                    fontWeight: FontWeight.w900,
-                    color: Colors.blueGrey
-                  ),
+                      fontSize: 45.0,
+                      fontWeight: FontWeight.w900,
+                      color: Colors.blueGrey),
                 ),
               ],
             ),
@@ -83,34 +76,22 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
             ),
             RoundedButton(
               title: 'Log in',
-              color:Colors.lightBlueAccent,
-              onPressed: (){
+              color: Colors.lightBlueAccent,
+              onPressed: () {
                 Navigator.pushNamed(context, LoginScreen.id);
-                },
-
+              },
             ),
             RoundedButton(
-              title:'Register',
+              title: 'Register',
               color: Colors.blueAccent,
-              onPressed: (){
+              onPressed: () {
                 Navigator.pushNamed(context, RegistrationScreen.id);
               },
             ),
-
           ],
         ),
       ),
     );
   }
 
-  void checkCurrentUser()   {
-       _auth.currentUser().then((value) {
-        if(value!=null){
-          Navigator.pushNamed(context, ArticlesScreen.id);
-        }
-      });
-
-  }
 }
-
-

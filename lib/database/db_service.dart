@@ -1,15 +1,15 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutternews/model/article.dart';
 import 'package:uuid/uuid.dart';
 
 class DatabaseService {
   static const Uuid _uuid = Uuid();
 
-  final CollectionReference _favoritesCollection = Firestore.instance
+  final CollectionReference _favoritesCollection = FirebaseFirestore.instance
       .collection('favorites');
   final _auth = FirebaseAuth.instance;
+
   List<Article> _articles = <Article>[];
 
   List<Article> get articles => List.unmodifiable(_articles);
@@ -21,33 +21,34 @@ class DatabaseService {
 
 
   Future addFavorite(Article article) async {
-    FirebaseUser user = await _auth.currentUser();
-    CollectionReference _favoritesUserCollection = Firestore.instance
-        .collection(user.uid);
+    User? user = await _auth.currentUser;
+    CollectionReference _favoritesUserCollection = FirebaseFirestore.instance
+        .collection(user!.uid);
     _articles.add(article);
-    return await _favoritesUserCollection.document(article.uid).setData(
+    return await _favoritesUserCollection.doc(article.uid).set(
         article.toJson());
   }
 
   Future deleteFavorite(Article article) async {
-    FirebaseUser user = await _auth.currentUser();
-    CollectionReference _favoritesUserCollection = Firestore.instance
-        .collection(user.uid);
+    User? user = await _auth.currentUser;
+    CollectionReference _favoritesUserCollection = FirebaseFirestore.instance
+        .collection(user!.uid);
     if(_articles.contains(article)){
       _articles.remove(article);
     }
-    return await _favoritesUserCollection.document(article.uid).delete();
+    return await _favoritesUserCollection.doc(article.uid).delete();
   }
 
   Future loadFavorites() async{
-    FirebaseUser user = await _auth.currentUser();
-    CollectionReference _favoritesUserCollection = Firestore.instance
-        .collection(user.uid);
-    QuerySnapshot snapshot=await _favoritesUserCollection.getDocuments();
-    List<Article> res= snapshot.documents.map((DocumentSnapshot e) => Article.fromJson(e.data)).toList();
+    User? user = await _auth.currentUser;
+    CollectionReference _favoritesUserCollection = FirebaseFirestore.instance
+        .collection(user!.uid);
+    QuerySnapshot snapshot=await _favoritesUserCollection.get();
+
+    List<Article> res=snapshot.docs.map((DocumentSnapshot e) => Article.fromJson(e.data()! as Map<String,dynamic> )).toList();
+
+    //List<Article> res= snapshot.docs.map((DocumentSnapshot e) => Article.fromJson(e.data)).toList();
     _articles.clear();
     _articles.addAll(res);
   }
-
-
 }
